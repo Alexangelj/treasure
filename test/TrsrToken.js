@@ -36,30 +36,66 @@ contract('TrsrToken', accounts => {
         let trsr = instance;
         let value = 100;
         let high_value = 55555555;
+
         // Name the users
         let admin_account = accounts[0];
         let user_account = accounts[1];
+
         // Get starting balances
         let balance = await trsr.balanceOf(admin_account);
         let admin_balance_start = balance.toNumber();
         balance = await trsr.balanceOf(user_account);
         let user_balance_start = balance.toNumber();
+
         // Transfer value
-        await trsr.transfer(user_account, value);
+        let transfer_event = await trsr.transfer(user_account, value);
+
         // Get ending balances
         balance = await trsr.balanceOf(admin_account);
         let admin_balance_end = balance.toNumber();
         balance = await trsr.balanceOf(user_account);
-        let user_balance_end = balance.toNumber();        
+        let user_balance_end = balance.toNumber();    
+
         // Assert starting balances +/- value transfer = ending balances
         assert.strictEqual(admin_balance_start, admin_balance_end + value, 'Not subtracting the correct value form starting balance.');
         assert.strictEqual(user_balance_start, user_balance_end - value, 'Not adding correct value to starting balance.');
+        
+        // Assert transfer event took place
+        // console.log(transfer_event.logs[0]);
+        assert.equal(transfer_event.logs.length, 1, 'Triggers a single event.');
+        assert.equal(transfer_event.logs[0].event, 'Transfer', 'Should return Transfer event.');
+        assert.equal(transfer_event.logs[0].args.from, admin_account, 'Logs the account from which the tokens are transferred from.');
+        assert.equal(transfer_event.logs[0].args.to, user_account, 'Logs the account from which the tokens are transferred to.');
+        assert.equal(transfer_event.logs[0].args.value.toNumber(), value, 'Logs the amount of tokens transferred.');
+
         // Transfer value higher than balance
         try {
             let error = await trsr.transfer(user_account, value);
         } catch (err) {
             assert(err.message.indexOf('revert') >= 0, 'Transferring more value than in balance.');
         }
+
+        // Transfer signed integer
+        try {
+            let signed_int = await trsr.transfer(user_account, -50);
+        } catch (err) {
+            assert(err.message.indexOf('revert') >= 0, 'Transfering signed integers is an invalid input.');
+        }
+
+    });
+
+
+    it('Approves tokens for delegated transfer.', async () => {
+        // Approve an account
+        let instance = await TrsrToken.deployed();
+        let address = accounts[1];
+        let allowance_amt = 55;
+        let approval = await instance.approve.call(address, allowance_amt);
+
+        // Assert approval functions correctly
+        console.log(approval);
+        assert.equal(approval, true, 'It does not return true.');
+        // FIX assert.equal(approval.logs.length, 1, 'Triggers a single event.');
     });
 })
 

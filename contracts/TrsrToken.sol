@@ -136,7 +136,7 @@ contract TrsrToken is IERC20, Ownable, TrsrTokenDetailed {
         return _balances[owner];
     }
 
-    function transferFrom(address from, address to, uint256 value) public returns(bool) {
+    function transferFrom(address from, address to, uint256 value) public returns (bool) {
         require(value <= _balances[from], "Value exceeds balance.");
         require(value <= _allowed[from][msg.sender], "Value exceeds allowance.");
         require(to != address(0), "Cannot send to self.");
