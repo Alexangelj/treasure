@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 /**
  * @title SafeMath
  * @dev Math operations with safety checks that revert on error
+ * //OpenZeppelin for the library
  */
 library SafeMath {
 
@@ -171,13 +172,12 @@ contract TrsrToken is IERC20, Ownable, TrsrTokenDetailed {
         emit Approval(msg.sender, spender, value);
         return true;
     }
+
     function transfer(address to, uint256 value) public returns (bool){
         require(value <= _balances[msg.sender], "Contract does not have enough to send.");
         require(to != address(0), "Cannot send to address(0).");
-
         _balances[msg.sender] = _balances[msg.sender].sub(value);
         _balances[to] = _balances[to].add(value);
-
         emit Transfer(msg.sender, to, value);
         return true;
     }

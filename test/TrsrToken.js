@@ -3,7 +3,7 @@ const assert = require('assert').strict;
 var _name = 'Treasure';
 var _symbol = 'TRSR';
 var _decimals = 18;
-var _totalSupply = 1000000;
+var _totalSupply = 100000;
 
 const TrsrToken = artifacts.require('TrsrToken');
 
@@ -163,6 +163,8 @@ contract('TrsrToken', accounts => {
         assert.equal(receiving_account_balance_end, receiving_account_balance + approved_value - 1, 'Should add the approved amount - 1 to received account balance.');
         
     });
+
+
 })
 
 

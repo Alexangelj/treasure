@@ -1,5 +1,10 @@
 const TrsrToken = artifacts.require("TrsrToken");
+const TrsrTokenCrowdsale = artifacts.require("TrsrTokenCrowdsale");
 
-module.exports = function(deployer) {
-  deployer.deploy(TrsrToken, 1000000);
+let tokenAmount = 100000;
+let tokenPrice = 1000000000000000; // in wei
+
+module.exports = async deployer => {
+  await deployer.deploy(TrsrToken, tokenAmount);
+  await deployer.deploy(TrsrTokenCrowdsale, TrsrToken.address, tokenPrice);
 };
