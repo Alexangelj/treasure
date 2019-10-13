@@ -41,7 +41,7 @@ library SafeMath {
   * @dev Subtracts two numbers, reverts on overflow (i.e. if subtrahend is greater than minuend).
   */
   function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-    require(b <= a);
+    require(b <= a, "Cannot be larger number after having subtracted");
     uint256 c = a - b;
 
     return c;
@@ -164,7 +164,7 @@ contract TrsrToken is IERC20, Ownable, TrsrTokenDetailed {
         emit Approval(msg.sender, spender, value);
         return true;
     }
-    
+
     function decreaseAllowance(address spender, uint256 value) public returns (bool) {
         require(spender != address(0), "Cannot be address(0)");
         _allowed[msg.sender][spender] = (_allowed[msg.sender][spender].sub(value));
