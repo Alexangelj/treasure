@@ -1,0 +1,21 @@
+{
+    "name": "treasure-token",
+    "version": "0.1.0",
+    "description": "A personal website integrated with its own token.",
+    "main": "truffle.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "dev": "lite-server"
+    },
+    "author": "Alexander",
+    "license": "GNU",
+    "devDependencies": {
+        "lite-server": "^2.5.4"
+    },
+    "dependencies": {
+        "@truffle/contract": "^4.0.36",
+        "web3": "^1.2.1"
+    }
+}

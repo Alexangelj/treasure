@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>Treasure</title>
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+        <div class="row">
+            <div class="col-lg-1-12">
+                <h1 class="text-center">Hello, world!</h1>
+                <hr/>
+                <br/>
+            </div>
+            <div id="content" class="text-center">
+                <p>
+                    Treasure tokens interact with the website in interesting ways.
+                    The price of a single Treasure token is <span class="token-price"></span> Ether. You have <span class="dapp-balance"></span>
+                </p>
+            <br/>
+            <form onSubmit="App.purchaseTokens(); return false;" role="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="amountTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                    </input>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-lg">Purchase Treasure Tokens</button>
+                    </span>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="progress">
+              <div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
+            <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
+            <hr>
+            <p id="accountAddress"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript 
+    
+        var provider = new Web3.providers.HttpProvider("http://localhost:8545");
+    var contract = require("@truffle/contract");
+
+    -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!--<script type="text/javascript" src="C:\Users\alexa\OneDrive\Documents\Master\Blockchain\Projects\Treasure_Project\node_modules\@truffle\contract\dist\truffle-contract.js"></script>
+    <script src="C:\Users\alexa\OneDrive\Documents\Master\Blockchain\Projects\Treasure_Project\node_modules\web3\src\index.js"></script>-->
+    <script src="js/app.js"></script> 
+
+</body>
+</body>
+</html>
