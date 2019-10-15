@@ -3,8 +3,8 @@ App = {
     contracts: {},
     account: '0x0',
     loading: false,
-    tokenPrice: 1000000000000000,
-    tokensSold: 0,
+    trsrPrice: 1000000000000000,
+    trsrSold: 0,
     tokensAvailable: 100000,
 
     init: function () {
@@ -28,38 +28,38 @@ App = {
     },
 
     initContracts: function() {
-        $.getJSON("C:\\Users\\alexa\\OneDrive\\Documents\\Master\\Blockchain\\Projects\\Treasure_Project\\build\\contracts\\TrsrTokenCrowdsale.json", function(trsrTokenCrowdsale) {
+        $.getJSON("TrsrTokenCrowdsale.json", function(trsrTokenCrowdsale) {
             App.contracts.trsrTokenCrowdsale = TruffleContract(trsrTokenCrowdsale);
             App.contracts.trsrTokenCrowdsale.setProvider(App.web3Provider);
             App.contracts.trsrTokenCrowdsale.deployed().then(function(trsrTokenCrowdsale){
                 console.log("Trsr Token Sale Address:", trsrTokenCrowdsale.address);
             });
         }).done(function(){
-            $.getJSON("C:\\Users\\alexa\\OneDrive\\Documents\\Master\\Blockchain\\Projects\\Treasure_Project\\build\\contracts\\TrsrToken.json", function(trsrToken) {
+            $.getJSON("TrsrToken.json", function(trsrToken) {
                 App.contracts.TrsrToken = TruffleContract(trsrToken);
                 App.contracts.TrsrToken.setProvider(App.web3Provider);
                 App.contracts.TrsrToken.deployed().then(function(trsrToken){
                     console.log("Trsr Token Address:", trsrToken.address);
                 });
 
-                App.listenForEvents();
+                //App.listenForEvents();
                 return App.render();
             });
         })
     },
 
     // Listen for events emmitted from contract
-    listenForEvents: function() {
-        App.contracts.trsrTokenCrowdsale.deployed().then(function(instance) {
-            instance.TokenPurchased({}, {
-                fromBlock: 0,
-                toBlock: 'latest',
-            }).watch(function(error, event){
-                console.log("Event Triggered", event);
-                App.render();
-            })
-        })
-    },
+    //listenForEvents: function() {
+    //    App.contracts.trsrTokenCrowdsale.deployed().then(function(instance) {
+    //        instance.TokenPurchased({}, {
+    //            fromBlock: 0,
+    //            toBlock: 'latest',
+    //        }).watch(function(error, event){
+    //            console.log("Event Triggered", event);
+    //            App.render();
+    //        })
+    //    })
+    //},
 
     render: function() {
         if (App.loading) {
@@ -84,17 +84,17 @@ App = {
         // Load token sale contract
         App.contracts.trsrTokenCrowdsale.deployed().then(function(instance){
             trsrTokenCrowdsaleInstance = instance;
-            return trsrTokenCrowdsaleInstance.tokenPrice();
-        }).then(function(tokenPrice){
-            App.tokenPrice = tokenPrice;
-            $('.token-price').html(web3.fromWei(App.tokenPrice, "ether").toNumber());
+            return trsrTokenCrowdsaleInstance.trsrPrice();
+        }).then(function(trsrPrice){
+            App.trsrPrice = trsrPrice;
+            $('.token-price').html(web3.fromWei(App.trsrPrice, "ether"));
             return trsrTokenCrowdsaleInstance.trsrSold();
-        }).then(function(tokensSol){
-            App.tokensSold = tokensSold.toNumber();
-            $('.tokens-sold').html(App.tokensSold);
+        }).then(function(trsrSold){
+            App.trsrSold = trsrSold.toNumber();
+            $('.tokens-sold').html(App.trsrSold);
             $('.tokens-available').html(App.tokensAvailable);
 
-            var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;
+            var progressPercent = (Math.ceil(App.trsrSold) / App.tokensAvailable) * 100;
             $('#progress').css('width', progressPercent + '%');
 
             // Load token contract
@@ -124,7 +124,7 @@ App = {
         App.contracts.trsrTokenCrowdsale.deployed().then(function(instance) {
           return instance.purchaseTokens(numberOfTokens, {
             from: App.account,
-            value: numberOfTokens * App.tokenPrice,
+            value: numberOfTokens * App.trsrPrice,
             gas: 500000 // Gas limit
           });
         }).then(function(result) {
@@ -140,7 +140,7 @@ App = {
     //    let instance = await App.contracts.trsrTokenCrowdsale.deployed();
     //    let tokenPurchase = await instance.purchaseTokens(amountTokens, {
     //        from: App.account,
-    //        value: amountTokens * App.tokenPrice,
+    //        value: amountTokens * App.trsrPrice,
     //        gas: 500000 // Gas limit
     //    });
     //    console.log("Tokens purchased...")
@@ -152,7 +152,7 @@ App = {
 $(function() {
     $(window).on(function() {
         App.init();
-    })
+    });
 });
 
 window.onload = function() {
