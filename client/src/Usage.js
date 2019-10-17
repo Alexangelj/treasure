@@ -1,20 +1,18 @@
 import React from "react";
 import { DrizzleContext } from "drizzle-react";
-import ChildComponent from './ChildComponent'
+import App from './App.js'
 
 export default () => (
   <DrizzleContext.Consumer>
     {drizzleContext => {
-
       const { drizzle, drizzleState, initialized } = drizzleContext;
-
+  
       if (!initialized) {
-          console.log(initialized)
-        return "Loading... from TheContent.js";
+        return "Loading...";
       }
 
       return (
-        <ChildComponent drizzle={drizzle} drizzleState={drizzleState} />
+        <App drizzle={drizzle} drizzleState={drizzleState} />
       );
     }}
   </DrizzleContext.Consumer>

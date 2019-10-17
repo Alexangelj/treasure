@@ -201,7 +201,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -11077,7 +11077,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -21766,7 +21766,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T00:30:42.959Z",
+  "updatedAt": "2019-10-16T23:34:01.612Z",
   "devdoc": {
     "details": "Math operations with safety checks that revert on error //OpenZeppelin for the library",
     "methods": {},

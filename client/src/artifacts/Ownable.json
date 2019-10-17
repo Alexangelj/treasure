@@ -281,7 +281,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -11157,7 +11157,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -21846,7 +21846,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-15T00:30:42.954Z",
+  "updatedAt": "2019-10-16T23:34:01.595Z",
   "devdoc": {
     "details": "Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions.  * This module is used through inheritance. It will make available the modifier `onlyOwner`, which can be applied to your functions to restrict their use to the owner.",
     "methods": {

@@ -3,20 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Usage from './Usage.js'
 
-import TrsrToken from './artifacts/TrsrToken.json'
 import { Drizzle, generateStore } from "drizzle";
 import { DrizzleContext } from "drizzle-react";
-import { DrizzleProvider } from 'drizzle-react-components'
+import TrsrToken from './artifacts/TrsrToken.json'
+import TrsrTokenCrowdsale from './artifacts/TrsrTokenCrowdsale.json'
 
-const options = { contracts: [TrsrToken] };
+const options = {
+    contracts: [
+        TrsrToken,
+        TrsrTokenCrowdsale
+    ]
+}
+
+
 const drizzleStore = generateStore(options);
 const drizzle = new Drizzle(options, drizzleStore);
+console.log('drizzle', drizzle)
 
 ReactDOM.render(
     <DrizzleContext.Provider drizzle={drizzle}>
-        <App drizzle={drizzle}/>
-    </DrizzleContext.Provider>, document.getElementById('root'));
+        <App />
+    </DrizzleContext.Provider>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
