@@ -1,5 +1,7 @@
 import React from "react";
-import { DrizzleContext } from "drizzle-react";
+import { newContextComponents } from "drizzle-react-components";
+
+const { AccountData, ContractData, ContractForm } = newContextComponents;
 
 export default class MyDrizzleApp extends React.Component {
     state = { dataKey: null };
@@ -16,8 +18,20 @@ export default class MyDrizzleApp extends React.Component {
     render() {
       const { TrsrToken } = this.props.drizzleState.contracts;
       const name = TrsrToken.name[this.state.dataKey];
-      console.log('trsrToken debug', TrsrToken)
       console.log('name is', name)
-      return <h1> Hello World</h1>;
+      let { drizzle } = this.props;
+      let { drizzleState }= this.props.drizzleState;
+      return (
+        <div>
+            <h3>Send Tokens</h3>
+            <ContractForm
+              drizzle={drizzle}
+              drizzleState={drizzleState}
+              contract="TrsrToken"
+              method="transfer"
+              labels={["To Address", "Amount to Send"]}
+            />
+          </div>
+      );
     }
   }

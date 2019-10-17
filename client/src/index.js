@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Usage from './Usage.js'
 
 import { Drizzle, generateStore } from "drizzle";
 import { DrizzleContext } from "drizzle-react";
@@ -17,10 +16,8 @@ const options = {
     ]
 }
 
-
 const drizzleStore = generateStore(options);
 const drizzle = new Drizzle(options, drizzleStore);
-console.log('drizzle', drizzle)
 
 ReactDOM.render(
     <DrizzleContext.Provider drizzle={drizzle}>
