@@ -3,7 +3,7 @@ import { newContextComponents } from "drizzle-react-components";
 
 const { AccountData, ContractData, ContractForm } = newContextComponents;
 
-export default class MyDrizzleApp extends React.Component {
+export default class TokenSymbol extends React.Component {
     state = { dataKey: null };
   
     componentDidMount() {
@@ -19,20 +19,22 @@ export default class MyDrizzleApp extends React.Component {
       const { TrsrToken } = this.props.drizzleState.contracts;
       const name = TrsrToken.name[this.state.dataKey];
       console.log('name is', name)
-
+      
       let { drizzle } = this.props;
       let { drizzleState }= this.props.drizzleState;
       return (
         <div>
-            <h3>Send Tokens</h3>
-            <ContractForm
-              drizzle={drizzle}
-              drizzleState={drizzleState}
-              contract="TrsrToken"
-              method="transfer"
-              labels={["To Address", "Amount to Send"]}
-            />
-          </div>
+          yessir: {JSON.stringify(name)}
+        </div>
+        //<div>
+        //    <ContractData
+        //        drizzle={drizzle}
+        //        drizzleState={drizzleState}
+        //        contract="TrsrToken"
+        //        method="symbol"
+        //        hideIndicator
+        //      />
+        //  </div>
       );
     }
   }

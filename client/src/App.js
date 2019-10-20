@@ -1,12 +1,46 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
+//import logo from './logo.svg';
+
+import { Drizzle, generateStore, EventActions } from "drizzle";
 import { DrizzleContext } from "drizzle-react";
-import MyDrizzleApp from './MyDrizzleApp';
 import { newContextComponents } from "drizzle-react-components";
+
+import MyDrizzleApp from './MyDrizzleApp';
+import drizzleOptions from './drizzleOptions';
+
+import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { Jumbotron } from 'react-bootstrap';
+
 
 const { AccountData, ContractData, ContractForm } = newContextComponents;
+
+const contractEventNotifier = store => next => action => {
+  if (action.type === EventActions.EVENT_FIRED) {
+    const contract = action.name
+    const contractEvent = action.event.event
+    const message = action.event.returnValues._message
+    const display = `${contract}(${contractEvent}): ${message}`
+
+    toast.success(display, { position: toast.POSITION.TOP_RIGHT })
+    console.log('toast successful', contract)
+  }
+  console.log('next action', action)
+  return next(action)
+}
+
+const appMiddlewares = [ contractEventNotifier ]
+
+const drizzleStore = generateStore(
+  drizzleOptions,
+  appMiddlewares
+)
+
+const drizzle = new Drizzle(drizzleOptions, drizzleStore);
+
 const myRender = data => (
   <>
     Value=<b>{data}</b>
@@ -14,155 +48,41 @@ const myRender = data => (
 );
 
 function App() {
-  return (
-  <DrizzleContext.Consumer>
+  return ( 
+  <DrizzleContext.Provider drizzle={drizzle}>
+   <DrizzleContext.Consumer>
     {drizzleContext => {
-      const { drizzle, drizzleState, initialized } = drizzleContext;
-  
+      const { 
+        drizzle, 
+        drizzleState, 
+        initialized } = drizzleContext;
       if (!initialized) {
-        return "Loading... Are you on the correct network?";
+        return "Loading... Are you connected to the Web 3.0?";
       }
       const { accounts } = drizzleState;
       return (
         //<MyDrizzleApp drizzle={drizzle} drizzleState={drizzleState} />
-        <div>
-            <h1 className="text-center"> Hello World</h1>
-                <h2>Your Account:</h2>
-                    <AccountData 
-                        drizzle={drizzle} 
-                        drizzleState={drizzleState} 
-                        accountIndex={0} 
-                        units="ether" 
-                        precision={0} />
-                <h2>Active Account with Custom Rendered Component</h2>
-                            <AccountData
-                              drizzle={drizzle}
-                              drizzleState={drizzleState}
-                              accountIndex={0}
-                              units="ether"
-                              precision={3}
-                              render={({ address, balance, units }) => (
-                                <div>
-                                  <div>My Address: <span style={{ color: "red" }}>{address}</span></div>
-                                  <div>My Ether: <span style={{ color: "red" }}>{balance}</span> {units}</div>
-                                </div>
-                              )}
-                            />
-
-                          <div className="section">
-                            <h2>TrsrToken</h2>
-                            <p>
-                              This shows a simple ContractData component with no arguments,
-                              along with a form to set its value.
-                            </p>
-                            <p>
-                              <strong>Total Supply of Tokens: </strong>
-                              <ContractData
-                                drizzle={drizzle}
-                                drizzleState={drizzleState}
-                                contract="TrsrToken"
-                                method="balanceOf"
-                                methodArgs={[accounts[0]]}
-                              />
-                            </p>
-                            <ContractForm
-                              drizzle={drizzle}
-                              drizzleState={drizzleState}
-                              contract="TrsrToken"
-                              method="name"
-                            />
-                            <p>
-                              <strong>Symbol: </strong>
-                              <ContractData
-                                drizzle={drizzle}
-                                drizzleState={drizzleState}
-                                contract="TrsrToken"
-                                method="symbol"
-                              />
-                            </p>
-                            <ContractForm
-                              drizzle={drizzle}
-                              drizzleState={drizzleState}
-                              contract="TrsrToken"
-                              method="decimals"
-                            />
-
-                            <h2>TrsrToken with Custom Rendering</h2>
-                            <p>
-                              This is the same contract as above, but here we customize the ContractForm's rendered component's style.
-                            </p>
-                            <ContractForm
-                              drizzle={drizzle}
-                              drizzleState={drizzleState}
-                              contract="TrsrToken"
-                              method="set"
-                              render={({ inputs, inputTypes, state, handleInputChange, handleSubmit }) => (
-                                <form onSubmit={handleSubmit}>
-                                  {inputs.map((input, index) => (
-                                    <input
-                                      style={{ fontSize: 30 }}
-                                      key={input.name}
-                                      type={inputTypes[index]}
-                                      name={input.name}
-                                      value={state[input.name]}
-                                      placeholder={input.name}
-                                      onChange={handleInputChange}
-                                    />
-                                  ))}
-                                  <button
-                                    key="submit"
-                                    type="button"
-                                    onClick={handleSubmit}
-                                    style={{ fontSize: 30 }}
-                                  >
-                                    Submit Big
-                                  </button>
-                                </form>
-
-                              )}
-                            />
-                          </div>
-                          <div className="section">
-            <h2>TrsrToken</h2>
-            <p>
-              Here we have a form with custom, friendly labels. Also note the
-              token symbol will not display a loading indicator. We've
-              suppressed it with the <code>hideIndicator</code> prop because we
-              know this variable is constant.
-            </p>
-            <p>
-              <strong>Total Supply: </strong>
-              <ContractData
-                drizzle={drizzle}
-                drizzleState={drizzleState}
-                contract="TrsrToken"
-                method="totalSupply"
-                methodArgs={[{ from: accounts[0] }]}
-              />{" "}
-              <ContractData
-                drizzle={drizzle}
-                drizzleState={drizzleState}
-                contract="TrsrToken"
-                method="symbol"
-                hideIndicator
-              />
-            </p>
-            <p>
-              <strong>My Balance: </strong>
-              <ContractData
-                drizzle={drizzle}
-                drizzleState={drizzleState}
-                contract="TrsrToken"
-                method="balanceOf"
-                methodArgs={[accounts[0]]}
-              />
-            </p>
-            <MyDrizzleApp drizzle={drizzle} drizzleState={drizzleState} />
+        <>
+          <div>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg text-center">
+                  <h1>Col1</h1>
+                </div>
+                <div className="col-lg text-center">
+                  <h1>Col2</h1>
+                </div>
+                <div className="col-lg text-center">
+                  <h1>Col3</h1>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       );
     }}
-  </DrizzleContext.Consumer>
+    </DrizzleContext.Consumer>
+  </DrizzleContext.Provider>
   )
 }
 
