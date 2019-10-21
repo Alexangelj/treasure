@@ -170,7 +170,7 @@
         </div>
       </nav>
 
-
+clean orange center
         <div>
           <nav className="nav navbar-lg" id="mainNav">
             <a className="navbar-brand-header" href="#">Treasure</a>
@@ -187,3 +187,88 @@
               </li>
           </ul>
         </div>
+
+left dark nice
+<nav class="navbar navbar-expand-md" id="mainNav">
+        <a class="navbar-brand" href="#">Treasure</a>
+        <Navbar.Collapse id="basic-navbar-nav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Code</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Token</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        </Navbar.Collapse>
+      </nav>
+
+navbar drop down
+<NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          </NavDropdown>
+
+app.js grid
+<div>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg text-center">
+                  <h1>Col1</h1>
+                </div>
+                <div className="col-lg text-center">
+                  <h1>Col2</h1>
+                </div>
+                <div className="col-lg text-center">
+                  <h1>Col3</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+Balance stuff
+                  <div>
+                    <h1>Balance</h1>
+                    <p>Check the token balance of an Ethereum address.</p>
+                    <ContractForm
+                      drizzle={drizzle}
+                      drizzleState={drizzleState}
+                      contract="TrsrToken"
+                      method="balanceOf"
+                      render={({ inputs, inputTypes, state, handleInputChange, handleSubmit }) => (
+                        <form onSubmit={handleSubmit} className="form-inline">
+                          {inputs.map((input, index) => (
+                            <div className="form-group">
+                              <input
+                                className="form-control mb-2 mr-sm-2"
+                                style={{ fontSize: 30 }}
+                                key={input.name}
+                                type={inputTypes[index]}
+                                name={input.name}
+                                value={state[input.name]}
+                                placeholder={input.name}
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                          ))}
+                            <button
+                              key="submit"
+                              type="button"
+                              className="btn btn-primary btn-dark mb-2"
+                              onClick={handleSubmit}
+                              style={{ fontSize: 30 }}
+                            >Balance
+                            </button>
+                        </form>
+                      )}
+                    />
+                    <div>

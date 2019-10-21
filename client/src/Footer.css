@@ -24,10 +24,3 @@ footer {
   footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li a.active {
     text-decoration: none;
   }
-
-.list-inline {
-    justify-content: center;
-}
-.list-inline-item {
-    justify-content: center;
-}

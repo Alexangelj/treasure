@@ -9,15 +9,6 @@
     line-height: 45px;
 }
 
-.nav-item {
-    color: rgb(255, 255, 255);
-}
-
-.nav-item:hover {
-    color: rgb(238, 150, 75);
-    transition-duration: all 0.5s;
-}
-
 #mainNav {
     border-color: rgba(34, 34, 34, 0.05);
     transition: all .35s;
