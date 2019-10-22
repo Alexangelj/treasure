@@ -70,9 +70,7 @@ function App() {
                     </div>
                     <div>
                     <h1>Quick Guide</h1>
-                    <p>
                     <h4>How does this token work?</h4>
-                    </p>
                     <p>
                       1. <strong>Login:</strong> Connect to a Web 3.0 provider like MetaMask, a browser plugin, to transact with the website.
                     </p>
@@ -84,9 +82,7 @@ function App() {
                     </p>
                     </div>
                     <div>
-                    <p>
                     <h1>The Treasure Token</h1>
-                    </p>
                     <p>
                     Treasure tokens are a valueless token that help you engage with the website.
                     </p>

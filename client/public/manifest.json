@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Treasure Token",
+  "name": "Website with integrated ERC-20 Token.",
   "icons": [
     {
       "src": "favicon.ico",
