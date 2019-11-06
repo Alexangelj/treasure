@@ -3639,6 +3639,33 @@
     "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
   "networks": {
+    "4": {
+      "events": {
+        "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_purchaser",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokensPurchased",
+          "type": "event",
+          "signature": "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271"
+        }
+      },
+      "links": {},
+      "address": "0x3be55009EEcC841E226CAF7A524f5CeB03B32766",
+      "transactionHash": "0x92e2f1e75b0fd69c6c531647dd5003e8c64da362bc6ae80aac80e0a7c758effc"
+    },
     "5777": {
       "events": {
         "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271": {
@@ -3668,7 +3695,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-16T23:34:04.124Z",
+  "updatedAt": "2019-11-02T06:14:58.427Z",
   "devdoc": {
     "methods": {}
   },

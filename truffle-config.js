@@ -18,7 +18,16 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
+require('dotenv').config()
+const getEnv = env => {
+  const value = process.env[env];  if (typeof value === 'undefined') {
+    throw new Error(`${env} has not been set.`);
+  }  return value;
+};
+const liveNetworkId = getEnv('ETH_LIVE_NETWORK_ID');
+const infuraKey = getEnv('INFURA_MAINNET_KEY');
+//const HDWalletProvider = require("@truffle/hdwallet-provider");
+
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -52,6 +61,13 @@ module.exports = {
       port: 8545,
       network_id: 4,
       gas: 4700000
+    },
+    live: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, infuraKey)
+      },
+      network_id: liveNetworkId,
+      gas: 11000000000
     }
     // Another network with more advanced options...
     // advanced: {
