@@ -1,0 +1,4 @@
+{
+    "vyper.analysis.onSave": false,
+    "vyper.compile.onSave": false
+}

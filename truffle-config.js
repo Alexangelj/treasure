@@ -26,7 +26,8 @@ const getEnv = env => {
 };
 const liveNetworkId = getEnv('ETH_LIVE_NETWORK_ID');
 const infuraKey = getEnv('INFURA_MAINNET_KEY');
-//const HDWalletProvider = require("@truffle/hdwallet-provider");
+const mnemonic = getEnv('MNEMONIC');
+const HDWalletProvider = require("truffle-hdwallet-provider");
 
 // const infuraKey = "fj4jll3k.....";
 //
@@ -67,7 +68,8 @@ module.exports = {
         return new HDWalletProvider(mnemonic, infuraKey)
       },
       network_id: liveNetworkId,
-      gas: 11000000000
+      gas: 5000000,
+      gasPrice: 10000000000
     }
     // Another network with more advanced options...
     // advanced: {

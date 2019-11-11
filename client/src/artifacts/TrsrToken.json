@@ -579,7 +579,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -11455,7 +11455,7 @@
                     "name": "this",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1042,
+                    "referencedDeclaration": 1040,
                     "src": "1045:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Context_$83",
@@ -22143,6 +22143,85 @@
     "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
   "networks": {
+    "1": {
+      "events": {
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event",
+          "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event",
+          "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+        }
+      },
+      "links": {},
+      "address": "0x84F36498B79dd27f77F34f1E396d4EB42a8348Df",
+      "transactionHash": "0xc65525cf9e398b67757421056fa98f1c1f66e606a17fb5373d0562ac63e393f9"
+    },
     "4": {
       "events": {
         "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
@@ -22298,12 +22377,13 @@
         }
       },
       "links": {},
-      "address": "0x5C7Ff88FDad701c92Fd8959dFade2eA8c410D0Cf",
-      "transactionHash": "0x15191ad5e782d16c91bacf92232380d96fe80395f9ce3eae197786ebf65549fa"
+      "address": "0x65f6E802b2604b1D1EFf27DAF5CD07AEB4286a25",
+      "transactionHash": "0x684a2472d1367d63acc7cebd8082b4c897a010d28aba4b16b8fca716cb6295be"
     }
   },
-  "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-02T06:14:58.419Z",
+  "schemaVersion": "3.0.17",
+  "updatedAt": "2019-11-11T19:37:11.165Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "isOwner()": {

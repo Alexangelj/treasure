@@ -3639,33 +3639,6 @@
     "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
   "networks": {
-    "1": {
-      "events": {
-        "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "address",
-              "name": "_purchaser",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint256",
-              "name": "_amount",
-              "type": "uint256"
-            }
-          ],
-          "name": "TokensPurchased",
-          "type": "event",
-          "signature": "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271"
-        }
-      },
-      "links": {},
-      "address": "0xFc6c9AA3777A105eda6596548F6dd5cD9fdC040c",
-      "transactionHash": "0x6c577041b8584882fc4337caf212dfde75039882b8eecf7fdd9341c651ba550a"
-    },
     "4": {
       "events": {
         "0x8f28852646c20cc973d3a8218f7eefed58c25c909f78f0265af4818c3d4dc271": {
@@ -3717,13 +3690,12 @@
         }
       },
       "links": {},
-      "address": "0xC7d0A973Ae6f2889fFd27D9f14FFCb062ff6B5Dc",
-      "transactionHash": "0x8c8500f6090078d4938e27ab648c4c524013fc52f901a5ce04421e63af2fda5a"
+      "address": "0xB2d2530fE4fc4F5A009912f792d822866611dbeC",
+      "transactionHash": "0xe05007d375c3131ab463f18e07d1224c23651b04a7be97c7ca0ced13004e9714"
     }
   },
-  "schemaVersion": "3.0.17",
-  "updatedAt": "2019-11-11T19:37:11.174Z",
-  "networkType": "ethereum",
+  "schemaVersion": "3.0.16",
+  "updatedAt": "2019-11-02T06:14:58.427Z",
   "devdoc": {
     "methods": {}
   },
