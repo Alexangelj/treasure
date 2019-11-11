@@ -67,7 +67,7 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(mnemonic, infuraKey)
       },
-      network_id: liveNetworkId,
+      network_id: 1,
       gas: 5000000,
       gasPrice: 10000000000
     }

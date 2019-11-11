@@ -21766,7 +21766,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.17",
-  "updatedAt": "2019-11-11T19:33:17.373Z",
+  "updatedAt": "2019-11-11T21:26:00.512Z",
   "devdoc": {
     "details": "Math operations with safety checks that revert on error //OpenZeppelin for the library",
     "methods": {},
